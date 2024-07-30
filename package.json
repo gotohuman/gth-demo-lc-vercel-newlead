@@ -1,0 +1,23 @@
+{
+  "name": "gth-demo-lc-vercel-lead-researcher",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@langchain/community": "^0.2.21",
+    "cheerio": "^1.0.0-rc.12",
+    "gotohuman": "^0.1.4",
+    "langchain": "^0.2.11",
+    "next": "14.2.5",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "overrides": {
+    "@langchain/core": "0.2.18"
+  }
+}
