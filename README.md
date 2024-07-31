@@ -1,6 +1,8 @@
-# AI automation: Personalized outreach to new lead
+# Non-chat AI agent (using LangChain)
 
-This AI agent [built with LangChain](https://www.langchain.com/langchain) takes the email address of a new lead (from a waitlist, newsletter signup or lead magnet), researches the company (based on the email domain if it's from a business), drafts a personalized initial email outreach and hands it to a human.
+An AI agent [built with LangChain](https://www.langchain.com/langchain). This example shows how to automate a repetitive workflow without having to engage in lengthy chat conversations again and again and how to use gotoHuman to still keep a human in the loop.
+
+The agent takes the email address of a new lead (from a waitlist, newsletter signup or lead magnet), researches the company (based on the email domain if it's from a business), drafts a personalized initial email outreach and hands it to a human.
 
 ## Use this agent in 1 minute
 
@@ -12,8 +14,8 @@ Then trigger it from our web app or via our API and find the results in your got
 - When asked for it, enter your [API key from OpenAI](https://platform.openai.com/api-keys) (OpenAI Sidemenu > __API keys__)
 
 - After your agent is deployed to your own serverless function, you are redirected to gotoHuman where you are asked to enter some config to tailor the agent behavior to your own needs.
-- Run your agent manually. Or [call our API](https://docs.gotohuman.com/run#trigger-events) when you get a new email from a lead to make the agent act more autonomously.
-- Watch your AI automation do its job [in your gotoHuman inbox](https://app.gotohuman.com)
+- Run your agent manually. Or, even better, [call our API](https://docs.gotohuman.com/run#trigger-events) when you get a new lead's email address to make the agent act more autonomously.
+- You receive a notification once the agent completed the tasks. Find the results [in your gotoHuman inbox](https://app.gotohuman.com)
 
 ## Extend
 Homework: Make the last step of the workflow `sendEmail` send an email automatically.
