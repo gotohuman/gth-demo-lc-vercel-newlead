@@ -1,7 +1,7 @@
 export const maxDuration = 60;
 export const dynamic = 'force-dynamic';
 
-import AiFlow from "gotohuman";
+import { AiFlow } from "gotohuman";
 import { ChatOpenAI } from "@langchain/openai";
 import { HumanMessage, SystemMessage } from "@langchain/core/messages";
 import { CheerioWebBaseLoader } from "@langchain/community/document_loaders/web/cheerio";
@@ -13,7 +13,7 @@ export async function POST(request) {
     onTrigger: "newLead", agentId: "new-lead-researcher-lc", fetch: fetch.bind(globalThis)
   })
   aiFlow.step({id: "extractDomain", fn: async({flow, input}) => {
-    return extractDomain(input[0])
+    return extractDomain(input[0].text)
   }})
   aiFlow.step({id: "summarizeWebsite", fn: async({input}) => {
     const scrapedWebsite = await readWebsiteContent(input);
@@ -35,7 +35,7 @@ export async function POST(request) {
 function extractDomain(email) {
   const domain = email.split('@').pop();
   const regex = createDomainRegex();
-  return (!regex.test(domain)) ? `https://${domain}` : flow.SKIP_TO('draftEmail', 'no-domain')
+  return (!regex.test(domain)) ? `https://${domain}` : AiFlow.skipTo('draftEmail')
 }
 
 const commonProviders = [
@@ -71,7 +71,7 @@ async function summarizeWebsite(model, webContent) {
 }
 
 async function draftEmail(model, websiteContent, senderName, senderCompanyDesc) {
-  const noDomain = (websiteContent === 'no-domain')
+  const noDomain = (websiteContent == null)
   
   const messages = [
     new SystemMessage(`You are a helpful sales expert, great at writing enticing emails.
